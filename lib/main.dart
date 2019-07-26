@@ -9,10 +9,20 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'ImHungry',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.red,
+        accentColor: Colors.yellowAccent,
+        canvasColor: Color.fromRGBO(236, 236, 236, 1),
+        fontFamily: 'Roboto',
+        textTheme: ThemeData.light().textTheme.copyWith(
+              title: TextStyle(
+                fontSize: 20,
+                fontFamily: 'Roboto',
+                fontWeight: FontWeight.w400,
+                fontStyle: FontStyle.italic,
+              ),
+            ),
       ),
       home: FoodCategories(),
     );
   }
 }
-
