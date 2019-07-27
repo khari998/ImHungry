@@ -13,8 +13,9 @@ class FoodCategories extends StatelessWidget {
         children: DUMMY_CATEGORIES
             .map((cat) => CategoryItem(
                   // map the dummy data into Category Widgets
-                  cat.title,
-                  cat.color,
+                  id: cat.id,
+                  title: cat.title,
+                  color: cat.color,
                 ))
             .toList(),
         gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
