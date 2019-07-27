@@ -8,7 +8,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'ImHungry',
-      theme: ThemeData(
+      theme: ThemeData( // Settings for Application theme
         primarySwatch: Colors.red,
         accentColor: Colors.yellowAccent,
         canvasColor: Color.fromRGBO(236, 236, 236, 1),
