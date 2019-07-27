@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import './food_cats.dart';
-import './meals.dart';
+import './screens/food_cats.dart';
+import './screens/meals.dart';
 
 void main() => runApp(MyApp());
 
