@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './food_cats.dart';
+import './meals.dart';
 
 void main() => runApp(MyApp());
 
@@ -8,7 +9,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'ImHungry',
-      theme: ThemeData( // Settings for Application theme
+      theme: ThemeData(
+        // Settings for Application theme
         primarySwatch: Colors.red,
         accentColor: Colors.yellowAccent,
         canvasColor: Color.fromRGBO(236, 236, 236, 1),
@@ -22,7 +24,11 @@ class MyApp extends StatelessWidget {
               ),
             ),
       ),
-      home: FoodCategories(),
+      // home: FoodCategories(),
+      routes: {
+        '/': (cont) => FoodCategories(), // routes to home page by default
+        Meals.routeName: (cont) => Meals(),
+      },
     );
   }
 }

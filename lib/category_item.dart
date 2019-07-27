@@ -10,10 +10,12 @@ class CategoryItem extends StatelessWidget {
 
   void selectCategory(BuildContext cont) {
     // changes page to Meals
-    Navigator.of(cont).push(
-      MaterialPageRoute(
-        builder: (_) => Meals(id, title),
-      ),
+    Navigator.of(cont).pushNamed(
+      Meals.routeName,
+      arguments: {
+        'id': id,
+        'title': title,
+      },
     );
   }
 
