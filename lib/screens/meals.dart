@@ -11,8 +11,7 @@ class Meals extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final routeArguments =
-        ModalRoute.of(context).settings.arguments as Map<String, String>;
+    final routeArguments = ModalRoute.of(context).settings.arguments as Map<String, String>;
     final categoryTitle = routeArguments['title'];
     final categoryId = routeArguments['id'];
     final categoryMeals = DUMMY_MEALS
@@ -27,6 +26,7 @@ class Meals extends StatelessWidget {
           itemBuilder: (cont, ind) {
             final recipe = categoryMeals[ind]; 
             return RecipeItem(
+              id: recipe.id,
               title: recipe.title,
               imageUrl: recipe.imageUrl,
               duration: recipe.duration,

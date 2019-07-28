@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import './screens/meal_details.dart';
 import './screens/food_cats.dart';
 import './screens/meals.dart';
 
@@ -28,6 +30,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (cont) => FoodCategories(), // routes to home page by default
         Meals.routeName: (cont) => Meals(),
+        MealDetails.routeName: (cont) => MealDetails(),
       },
     );
   }
