@@ -81,6 +81,7 @@ class RecipeItem extends StatelessWidget {
                       title,
                       style: TextStyle(
                         fontSize: 26,
+                        fontStyle: FontStyle.italic,
                         color: Colors.white,
                       ),
                       softWrap: true,
