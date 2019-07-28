@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../widgets/main_drawer.dart';
 import './favorites.dart';
 import './food_cats.dart';
 
@@ -14,6 +15,7 @@ class _TabsState extends State<Tabs> {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
+        drawer: MainDrawer(),
         appBar: AppBar(
           title: Text('Meals'),
           bottom: TabBar(
