@@ -1,20 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:im_hungry/models/recipe.dart';
 
 import '../widgets/recipe_item.dart';
-import '../dummy-data.dart';
 
 class Meals extends StatelessWidget {
   // final String categoryID;
   // final String categoryTitle;
   // Meals(this.categoryID, this.categoryTitle);
-  static const routeName = '/meals';
+  static const routeName = '/meals'; 
+
+  final List<Recipe> availableMeals;
+
+  Meals(this.availableMeals);
 
   @override
   Widget build(BuildContext context) {
     final routeArguments = ModalRoute.of(context).settings.arguments as Map<String, String>;
     final categoryTitle = routeArguments['title'];
     final categoryId = routeArguments['id'];
-    final categoryMeals = DUMMY_MEALS
+    final categoryMeals = availableMeals
         .where((recipe) => recipe.categories.contains(categoryId))
         .toList();
     return Scaffold(
