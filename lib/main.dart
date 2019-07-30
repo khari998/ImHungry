@@ -69,7 +69,7 @@ class _MyAppState extends State<MyApp> {
         '/': (cont) => Tabs(), // routes to home page by default
         Meals.routeName: (cont) => Meals(_availableMeals),
         MealDetails.routeName: (cont) => MealDetails(),
-        Filters.routeName: (cont) => Filters(_setFilters),
+        Filters.routeName: (cont) => Filters(_filters, _setFilters),
       },
     );
   }
