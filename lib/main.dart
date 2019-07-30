@@ -23,6 +23,24 @@ class _MyAppState extends State<MyApp> {
   };
 
   List<Recipe> _availableMeals = DUMMY_MEALS;
+  List<Recipe> _favoriteMeals = [];
+
+  void _toggleFavorite (String mealId) {
+    final existingIndex = _favoriteMeals.indexWhere((meal) => meal.id == mealId);
+    if (existingIndex >= 0) {
+      setState(() {
+        _favoriteMeals.removeAt(existingIndex);
+      });
+    } else {
+      setState(() {
+        _favoriteMeals.add(_availableMeals.firstWhere((meal) => meal.id == mealId));
+      });
+    }
+  }
+
+  bool isFavorite(String id) {
+    return _favoriteMeals.any((meal) => meal.id == id);
+  }
 
   void _setFilters (Map <String, bool> filterdata) {
     setState(() {
@@ -52,7 +70,7 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         // Settings for Application theme
         primarySwatch: Colors.red,
-        accentColor: Colors.yellowAccent,
+        accentColor: Colors.amberAccent,
         canvasColor: Color.fromRGBO(236, 236, 236, 1),
         fontFamily: 'Roboto',
         textTheme: ThemeData.light().textTheme.copyWith(
@@ -66,9 +84,9 @@ class _MyAppState extends State<MyApp> {
       ),
       // home: FoodCategories(),
       routes: {
-        '/': (cont) => Tabs(), // routes to home page by default
+        '/': (cont) => Tabs(_favoriteMeals), // routes to home page by default
         Meals.routeName: (cont) => Meals(_availableMeals),
-        MealDetails.routeName: (cont) => MealDetails(),
+        MealDetails.routeName: (cont) => MealDetails(_toggleFavorite, isFavorite),
         Filters.routeName: (cont) => Filters(_filters, _setFilters),
       },
     );

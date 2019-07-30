@@ -3,8 +3,13 @@ import 'package:flutter/material.dart';
 import '../widgets/main_drawer.dart';
 import './favorites.dart';
 import './food_cats.dart';
+import '../models/recipe.dart';
 
 class Tabs extends StatefulWidget {
+  final List<Recipe> favoriteMeals;
+
+  Tabs(this.favoriteMeals);
+
   @override
   _TabsState createState() => _TabsState();
 }
@@ -34,7 +39,7 @@ class _TabsState extends State<Tabs> {
         body: TabBarView(
           children: <Widget>[
             FoodCategories(),
-            Favorites(),
+            Favorites(widget.favoriteMeals),
           ],
         ),
       ),
