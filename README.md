@@ -1,6 +1,6 @@
 # im_hungry
 
-ImHungry is an iOS and Android application that allows you to keep track of your finances. It is written in Dart using the Flutter framework.
+ImHungry is an iOS and Android application that allows you to keep browse and sort your favorite foods. It is written in Dart using the Flutter framework.
 
 ## Getting Started
 
