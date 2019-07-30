@@ -21,20 +21,22 @@ class _FiltersState extends State<Filters> {
 
   @override
   initState() {
-  _glutenFree = widget.currentFilters['gluten'];
-  _vegetarian = widget.currentFilters['vegetarian'];
-  _vegan = widget.currentFilters['vegan'];
-  _lactoseFree = widget.currentFilters['lactose'];
+    _glutenFree = widget.currentFilters['gluten'];
+    _vegetarian = widget.currentFilters['vegetarian'];
+    _vegan = widget.currentFilters['vegan'];
+    _lactoseFree = widget.currentFilters['lactose'];
     super.initState();
   }
 
   Widget _buildSwitchListTile(
     String title,
+    String subtitle,
     bool currentVal,
     Function updateVal,
   ) {
     return SwitchListTile(
       title: Text(title),
+      subtitle: Text(subtitle),
       value: currentVal,
       onChanged: updateVal,
     );
@@ -73,27 +75,50 @@ class _FiltersState extends State<Filters> {
           Expanded(
             child: ListView(
               children: <Widget>[
-                _buildSwitchListTile("Lactose-Free", _lactoseFree, (newValue) {
+                _buildSwitchListTile("Lactose-Free",
+                    "Only show lactose-free foods", _lactoseFree, (newValue) {
                   setState(() {
                     _lactoseFree = newValue;
                   });
                 }),
-                _buildSwitchListTile("Gluten-Free", _glutenFree, (newValue) {
+                _buildSwitchListTile(
+                    "Gluten-Free", "Only show gluten-free foods", _glutenFree,
+                    (newValue) {
                   setState(() {
                     _glutenFree = newValue;
                   });
                 }),
-                _buildSwitchListTile("Vegan", _vegan, (newValue) {
+                _buildSwitchListTile("Vegan", "Only show vegan foods", _vegan,
+                    (newValue) {
                   setState(() {
                     _vegan = newValue;
                   });
                 }),
-                _buildSwitchListTile("Vegetarian", _vegetarian, (newValue) {
+                _buildSwitchListTile(
+                    "Vegetarian", "Only show vegetarian foods", _vegetarian,
+                    (newValue) {
                   setState(() {
                     _vegetarian = newValue;
                   });
                 }),
               ],
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.only(bottom: 30),
+            child: Center(
+              child: FloatingActionButton(
+                child: Icon(Icons.save),
+                onPressed: () {
+                  final selectedFilters = {
+                    'gluten': _glutenFree,
+                    'lactose': _lactoseFree,
+                    'vegan': _vegan,
+                    'vegetarian': _vegetarian,
+                  };
+                  widget.saveFilters(selectedFilters);
+                },
+              ),
             ),
           )
         ],
